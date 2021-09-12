@@ -1,5 +1,6 @@
 function checkCashRegister(price, cash, cid) {
 
+    /* Array with the price unity */
     const unit = [
         ["ONE HUNDRED", 100],
         ["TWENTY", 20],
@@ -11,12 +12,18 @@ function checkCashRegister(price, cash, cid) {
         ["NICKEL", 0.05],
         ["PENNY",0.01]
     ]
+    /* Object to return */
     let object = {
         status : "",
         change : [],
     }
+    /* Calcul of the due change */
     let change = cash - price;
     let change_original = change
+
+    /* Creation of an array with the following structure :
+    ** [0] = sum of all [i][0] in cid
+    ** [1] = sum of all [i][1] in cid */
     let temp_sum = cid.reduce((a,b) => a.map((c,i) => c + b[i]))
     let sum = temp_sum[1].toFixed(2)
 
@@ -33,13 +40,9 @@ function checkCashRegister(price, cash, cid) {
         object.status = "INSUFFICIENT_FUNDS"
         console.log(object)
     }
-    console.log(Math.floor(sum))
 
-    // for (let elem of cid){
-    //     console.log(unit[elem[0]])
-    //     console.log(elem[0])
-    // }
-
+    cid.reverse()
+    
 }
 
 checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25],
