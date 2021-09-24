@@ -25,25 +25,47 @@ function checkCashRegister(price, cash, cid) {
     ** [0] = sum of all [i][0] in cid
     ** [1] = sum of all [i][1] in cid */
     let temp_sum = cid.reduce((a,b) => a.map((c,i) => c + b[i]))
+
+    /* Sum of the cid array */
     let sum = temp_sum[1].toFixed(2)
+
+    let given = 0;
+    let times = 0;
 
     console.log("sum : " + sum)
     console.log("change : " + change)
 
-    if (change == sum){
-        object.status = "CLOSED"
-        // add the change
-        console.log(object);
-    }
-    // also the exact change can't be returned
-    else if (change > sum){
-        object.status = "INSUFFICIENT_FUNDS"
-        console.log(object)
-    }
 
     cid.reverse()
-    
-}
+    console.log(cid)
+    let i
+    for (i = 0; i < unit.length; i++)
+    {
+        if (cid[i][0] != 0 && unit[i][1] < change)
+        {
+            times = cid[i][1] / unit[i][1];
+            while (times-- && unit[i][1] <= change)
+            {
+                given += unit[i][1];
+                change -= unit[i][1];
+            }
+            if (change == 0)
+                break;
+        }
+    }
+    object.status = "OPEN"
+    object.change = cid[i]
+    console.log(object)
+    // if (change_original == sum) {
+    //     object.status = "CLOSED"
+    //     object.change = cid
+    //     return object
+    // }
 
-checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25],
- ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
+    // else if (change_original > sum) {
+    //     object.status = "INSUFFICIENT_FUNDS"
+    //     return object
+    // }
+}
+// should return {status: "OPEN", change: [["QUARTER", 0.5]]}
+checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
