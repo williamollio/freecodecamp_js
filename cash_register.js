@@ -34,9 +34,15 @@ function checkCashRegister(price, cash, cid) {
     let times = 0;
     let given = 0;
     let sum_given = 0
-    let temp_arr = [...unit]
+
+    /* Reverse cid to have the same structure as the unit array.
+    ** It's also the structure of the desired output */
     cid.reverse()
 
+    /* Copy the unit array into a temporary array */
+    let temp_arr = [...unit]
+
+    /* Look through each part of the cash register in order to extract the correct amount of money */
     for (i; i < unit.length; i++)
     {
             times = cid[i][1] / unit[i][1];
@@ -44,8 +50,10 @@ function checkCashRegister(price, cash, cid) {
             {
                 given += unit[i][1];
                 change -= unit[i][1];
+                /* Rounded to two digits behind the decimal point */
                 change = change.toFixed(2)
             }
+            /* Build the temporary array and sums up the change */
             if (given > 0)
             {
                 temp_arr[i][1] = given
@@ -69,7 +77,7 @@ function checkCashRegister(price, cash, cid) {
 
     else{
         let final_arr = []
-        for(let i = 0; i < temp_arr.length; i++)
+        for(i = 0; i < temp_arr.length; i++)
         {
             if (temp_arr[i][1] != 0)
                 final_arr.push(temp_arr[i])
@@ -80,6 +88,5 @@ function checkCashRegister(price, cash, cid) {
     }
 }
 
-checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1],
-["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20],
-["TWENTY", 60], ["ONE HUNDRED", 100]])
+
+checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
