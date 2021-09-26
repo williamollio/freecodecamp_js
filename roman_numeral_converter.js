@@ -1,5 +1,6 @@
 function convertToRoman(num) {
 
+    /* Object which contains the conversions to the roman numerals */
     const romans = {
         1: "I",
         4: "IV",
@@ -18,6 +19,8 @@ function convertToRoman(num) {
 
     let roman = "";
 
+    /* Look for the biggest roman numerals which could be used to convert.
+    ** And then substract the value of num by the value of the roman numerals used */
     while (num) {
         while (num >= 1000) {
             roman += romans[1000]
