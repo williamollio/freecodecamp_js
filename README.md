@@ -4,9 +4,9 @@
 
 A palindrome is a **word** or **sentence** that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing.
 
-`<p>Examples :</p>`
-*   eye
-*   A man, a plan, a canal. Panama
+`Examples :`
+`*   eye`
+`*   A man, a plan, a canal. Panama`
 
 The programme should return ```true``` if the given string is a palindrome. Otherwise, ```false```.
 
