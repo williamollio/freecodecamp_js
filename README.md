@@ -75,6 +75,18 @@ Otherwise should return, with the change due in coins and bills, sorted in highe
 ```javascript
 {status: "OPEN", change: [...]}
 ```
+
+| Currency Unit |      Amount    |
+| ------------- | -------------- |
+| Penny    | $0.01 (PENNY)|
+| Nickel      | $0.05 (NICKEL) |
+| Dime      | $0.1 (DIME) |
+| Quarter      | $0.25 (QUARTER) |
+| Dollar      | $5 (FIVE) |
+| Ten Dollars      | $10 (TEN) |
+| Twenty Dollars     | $20 (TWENTY) |
+| One-hundred Dollars     | $100 (HUNDRED) |
+
 ___
 
 ## About
